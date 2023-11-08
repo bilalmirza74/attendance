@@ -73,62 +73,53 @@ if (isset($_GET["month"])) {
 $attendance = getAttendanceForCurrentMonth($conn, $_COOKIE["class_id"], $month);
 
 ?>
-<link rel="stylesheet" href="/styles/attendanceSheet.css">
-<div class="main-body d-flex px-3">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../styles/attendanceSheet.css">
+<div class="over main-body d-flex px-3">
     <?php include_once("../templates/sidemenu.inc.php"); ?>
-    <div class="d-flex flex-column flex-grow-1 gap-2">
+    <div class="over d-flex flex-column flex-grow-1 gap-2">
         <div class="d-flex justify-content-between fg-bg rounded py-2 px-3">
-            <a href="<?= $_SERVER['PHP_SELF'] . "?month=" . date("Y-m", strtotime($month . " -1 month")) ?>"
-                class="w-25 text-start">
-                <i class="fa-solid fa-arrow-left "></i>
+            <!-- Navigation buttons -->
+            <a href="<?= $_SERVER['PHP_SELF'] . "?month=" . date("Y-m", strtotime($month . " -1 month")) ?>" class="w-25 text-start">
+                <i class="fa-solid fa-arrow-left"></i>
                 <?= date("M, Y", strtotime($month . " -1 month")) ?>
             </a>
             <div class="w-25 text-center">
                 <?= date("F, Y", strtotime($month)) ?>
             </div>
-            <a href="<?= $_SERVER['PHP_SELF'] . "?month=" . date("Y-m", strtotime($month . " +1 month")) ?>"
-                class="w-25 text-end">
+            <a href="<?= $_SERVER['PHP_SELF'] . "?month=" . date("Y-m", strtotime($month . " +1 month")) ?>" class="w-25 text-end">
                 <?= date("M, Y", strtotime($month . " +1 month")) ?>
-                <i class="fa-solid fa-arrow-right "></i>
-
+                <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
-        <div class="overflow-x-scroll">
-            <table class="">
+        <div class="table-container">
+            <table class="custom-table">
                 <thead>
                     <tr>
-                        <!-- <th scope="col">RollNo</th> -->
-                        <th scope="">Name</th>
+                        <th scope="col">Name</th>
                         <?php foreach ($attendance as $key => $value): ?>
-                            <th scope="">
-                                
-                                    <?= date("d", strtotime($value["date"])) ?>
-                                
-                                
-                                    <?= date("h:m", strtotime($value["time"])) ?>
-                                
+                            <th scope="col">
+                                <?= date("d", strtotime($value["date"])) ?> <br>
+                                <?= date("h:m", strtotime($value["time"])) ?>
                             </th>
                         <?php endforeach; ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($students as $student) { ?>
+                    <?php foreach ($students as $student): ?>
                         <tr>
-
-                            <td>
-                                <?=$student['name']; ?>
-                            </td>
-
+                            <td><?= $student['name']; ?></td>
                             <?php foreach ($attendance as $key => $value): ?>
-                                <?php if (in_array($student['student_id'], $value['absentees'])): ?>
-                                    <td>A</td>
-                                <?php else: ?>
-                                    <td>P</td>
-                                <?php endif; ?>
+                                <td>
+                                    <?php if (in_array($student['student_id'], $value['absentees'])): ?>
+                                        <span class="absent">A</span>
+                                    <?php else: ?>
+                                        <span class="present">P</span>
+                                    <?php endif; ?>
+                                </td>
                             <?php endforeach; ?>
-
                         </tr>
-                    <?php } ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

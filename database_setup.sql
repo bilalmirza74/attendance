@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2023 at 01:30 PM
+-- Generation Time: Nov 08, 2023 at 10:48 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -33,6 +33,51 @@ CREATE TABLE `absentees` (
   `student_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `absentees`
+--
+
+INSERT INTO `absentees` (`absentee_id`, `attendance_id`, `student_id`) VALUES
+(20, 31, 13),
+(21, 31, 19),
+(22, 32, 13),
+(23, 32, 25),
+(24, 32, 27),
+(25, 32, 28),
+(49, 37, 1),
+(50, 37, 13),
+(51, 37, 14),
+(52, 37, 15),
+(53, 37, 16),
+(54, 37, 17),
+(55, 37, 18),
+(56, 37, 19),
+(57, 37, 20),
+(58, 37, 21),
+(59, 37, 22),
+(60, 37, 23),
+(61, 37, 24),
+(62, 37, 25),
+(63, 37, 26),
+(64, 37, 27),
+(65, 37, 28),
+(66, 37, 29),
+(67, 37, 30),
+(68, 37, 31),
+(69, 37, 32),
+(70, 39, 13),
+(71, 39, 15),
+(72, 40, 13),
+(73, 42, 1),
+(74, 43, 14),
+(75, 43, 16),
+(76, 51, 13),
+(77, 54, 15),
+(78, 54, 29),
+(79, 55, 14),
+(80, 55, 17),
+(81, 55, 19);
+
 -- --------------------------------------------------------
 
 --
@@ -52,7 +97,30 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`attendance_id`, `class_id`, `date`, `time`, `teacher_id`) VALUES
-(25, 14, '0000-00-00', '00:00:00', 14);
+(31, 14, '2023-10-18', '08:52:00', 14),
+(32, 14, '2023-10-22', '09:14:00', 14),
+(34, 14, '2023-10-05', '10:42:00', 14),
+(35, 14, '2023-10-05', '10:42:00', 14),
+(37, 14, '2023-10-24', '10:53:00', 14),
+(38, 24, '2023-09-27', '11:00:00', 14),
+(39, 14, '2023-10-24', '12:22:00', 14),
+(40, 14, '2023-10-19', '11:43:00', 16),
+(41, 18, '2023-10-12', '12:49:00', 16),
+(42, 18, '2023-10-24', '12:50:00', 16),
+(43, 14, '2023-10-01', '09:50:00', 14),
+(44, 14, '2023-11-02', '09:50:00', 14),
+(45, 14, '2023-10-03', '09:50:00', 14),
+(46, 14, '2023-10-04', '09:51:00', 14),
+(47, 14, '2023-10-07', '09:51:00', 14),
+(48, 14, '2023-10-08', '09:53:00', 14),
+(49, 14, '2023-10-08', '10:13:00', 14),
+(50, 14, '2023-10-09', '10:13:00', 14),
+(51, 14, '2023-10-10', '10:30:00', 14),
+(52, 14, '2023-10-11', '10:14:00', 14),
+(53, 14, '2023-10-12', '10:14:00', 14),
+(54, 14, '2023-10-14', '12:00:00', 14),
+(55, 14, '2023-10-15', '10:19:00', 14),
+(56, 14, '2023-10-16', '10:26:00', 14);
 
 -- --------------------------------------------------------
 
@@ -85,7 +153,15 @@ INSERT INTO `class` (`class_id`, `class_name`, `class_code`, `section`, `start_d
 (24, 'NEW', '0O89EC', 'B', '2023-03-31'),
 (25, 'Science', 'BLCLIU', 'D', '2023-03-31'),
 (26, 'BTECH', 'Y6MXAJ', 'A', '2023-04-05'),
-(27, 'BCA', '73RYDQ', 'b', '2023-04-22');
+(27, 'BCA', '73RYDQ', 'b', '2023-04-22'),
+(28, 'becaddd', '2ACECV', 'dd', '2023-10-24'),
+(29, 'd', 'F2T3HI', 'd', '2023-10-24'),
+(30, 'd', 'UV7Z42', 'd', '2023-10-24'),
+(31, 'd', 'EF5IF7', 'd', '2023-10-24'),
+(32, 'd', 'B4RCJ3', 'd', '2023-10-24'),
+(33, 'd', 'V0M58P', 'd', '2023-10-24'),
+(34, 'd', 'EU7IW7', 'd', '2023-10-24'),
+(35, 'd', 'AL6GNX', 'd', '2023-10-24');
 
 -- --------------------------------------------------------
 
@@ -96,36 +172,37 @@ INSERT INTO `class` (`class_id`, `class_name`, `class_code`, `section`, `start_d
 CREATE TABLE `class_student_member` (
   `member_id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL
+  `student_id` int(11) NOT NULL,
+  `roll_no` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `class_student_member`
 --
 
-INSERT INTO `class_student_member` (`member_id`, `class_id`, `student_id`) VALUES
-(1, 18, 1),
-(8, 14, 1),
-(9, 14, 13),
-(10, 14, 14),
-(11, 14, 15),
-(12, 14, 16),
-(13, 14, 17),
-(14, 14, 18),
-(15, 14, 19),
-(16, 14, 20),
-(17, 14, 21),
-(18, 14, 22),
-(19, 14, 23),
-(20, 14, 24),
-(21, 14, 25),
-(22, 14, 26),
-(23, 14, 27),
-(24, 14, 28),
-(25, 14, 29),
-(26, 14, 30),
-(27, 14, 31),
-(28, 14, 32);
+INSERT INTO `class_student_member` (`member_id`, `class_id`, `student_id`, `roll_no`) VALUES
+(1, 18, 1, NULL),
+(8, 14, 1, NULL),
+(9, 14, 13, NULL),
+(10, 14, 14, NULL),
+(11, 14, 15, NULL),
+(12, 14, 16, NULL),
+(13, 14, 17, NULL),
+(14, 14, 18, NULL),
+(15, 14, 19, NULL),
+(16, 14, 20, NULL),
+(17, 14, 21, NULL),
+(18, 14, 22, NULL),
+(19, 14, 23, NULL),
+(20, 14, 24, NULL),
+(21, 14, 25, NULL),
+(22, 14, 26, NULL),
+(23, 14, 27, NULL),
+(24, 14, 28, NULL),
+(25, 14, 29, NULL),
+(26, 14, 30, NULL),
+(27, 14, 31, NULL),
+(28, 14, 32, NULL);
 
 -- --------------------------------------------------------
 
@@ -151,7 +228,15 @@ INSERT INTO `class_teacher_member` (`member_id`, `class_id`, `teacher_id`) VALUE
 (12, 24, 14),
 (13, 25, 14),
 (14, 14, 16),
-(15, 26, 14);
+(15, 26, 14),
+(17, 28, 16),
+(18, 29, 16),
+(19, 30, 16),
+(20, 31, 16),
+(21, 32, 16),
+(22, 33, 16),
+(23, 34, 16),
+(24, 35, 16);
 
 -- --------------------------------------------------------
 
@@ -165,6 +250,15 @@ CREATE TABLE `on_leave` (
   `student_id` int(11) NOT NULL,
   `reason` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `on_leave`
+--
+
+INSERT INTO `on_leave` (`leave_id`, `attendance_id`, `student_id`, `reason`) VALUES
+(6, 32, 25, 'medical'),
+(7, 37, 1, 'sports'),
+(8, 39, 15, 'Wedding');
 
 -- --------------------------------------------------------
 
@@ -304,19 +398,19 @@ ALTER TABLE `teacher`
 -- AUTO_INCREMENT for table `absentees`
 --
 ALTER TABLE `absentees`
-  MODIFY `absentee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `absentee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `class_student_member`
@@ -328,13 +422,13 @@ ALTER TABLE `class_student_member`
 -- AUTO_INCREMENT for table `class_teacher_member`
 --
 ALTER TABLE `class_teacher_member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `on_leave`
 --
 ALTER TABLE `on_leave`
-  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `student`
