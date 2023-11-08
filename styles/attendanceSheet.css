@@ -44,14 +44,14 @@
 
 .absent {
     background-color: #ff7f7f; /* Red color for absent status */
-    color: #fff;
+    color: #000;
     padding: 2px 6px;
     border-radius: 3px;
 }
 
 .present {
     background-color: #7fff7f; /* Green color for present status */
-    color: #fff;
+    color: #000;
     padding: 2px 6px;
     border-radius: 3px;
 }
